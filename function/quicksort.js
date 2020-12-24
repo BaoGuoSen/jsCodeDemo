@@ -1,4 +1,12 @@
-var arr = [2,3,1,4,2];
+var arr = [2,3,1,4,2,10,34,5,5];
+function getmid(left,mid,right) {
+    let res = left > mid ? left : mid;
+    if (res < right) {
+        return res;
+    } else {
+        return left > right ? left : right;
+    }
+}
 
 function quicksort(arr) {
     if(arr.length === 0) return [];
@@ -7,7 +15,7 @@ function quicksort(arr) {
     let center = [];
     let right = [];
 
-    let flag = arr[Math.floor(arr.length/2)];
+    let flag = getmid(arr[0], arr[Math.floor(arr.length/2)], arr[arr.length-1]) // 取中位数，能保证最小的比较次数，优化排序性能
 
     for(let i = 0;i<arr.length;i++) {
         let cur = arr[i];
@@ -25,17 +33,3 @@ function quicksort(arr) {
 let newarr = quicksort(arr);
 // arr.sort((a,b) => a-b);
 console.log(newarr);
-
-// function bubble(arr) {
-//     for(let i = 0;i<arr.length;i++) {
-//         for(let j = 0;j<arr.length-i;j++) {
-//             if (arr[j] > arr[j+1]) {
-//                 let temp = arr[j];
-//                 arr[j] = arr[j+1];
-//                 arr[j+1] = temp;
-//             }
-//         }
-//     }
-//     return arr
-// }
-// console.log(bubble([1,3,4,33,5,8,9,56,4,3]))

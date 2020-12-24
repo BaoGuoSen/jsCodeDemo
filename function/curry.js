@@ -17,7 +17,7 @@ function sum1() {
 
 let sum = curry(sum1);
 sum(1);
-sum(2)(3,4)(100);
+sum(2)(3,4)(100,12,18);
 console.log(sum());
 
 // function curry(fn) {

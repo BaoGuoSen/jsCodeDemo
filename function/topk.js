@@ -8,7 +8,7 @@ function topk(arr,k) {
             map.set(item,1);
         }
     });
-    
+    console.log(...map)
     let newarr = [...map].sort((a,b) => b[1]-a[1]);
     return newarr.slice(0,k);
 }

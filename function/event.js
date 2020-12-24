@@ -1,4 +1,4 @@
-class event {
+class event2 {
     constructor() {
         this.events = {};
     }
@@ -35,5 +35,5 @@ class event {
     }
 }
 var fn = () => {};
-var event1 = new event();
+var event1 = new event2()
 event1.on('click', fn);

@@ -4,7 +4,7 @@ PromisemyAll = function(promises) {
         let values = new Array(len);
         let nums = 0;
         for(let i = 0;i<promises.length;i++) {
-            Promise.resolve(promises[i]).then((val) => {
+            promises[i].then((val) => {
                 nums++;
                 values[i] = val;
                 if(nums === len) 
@@ -19,7 +19,7 @@ PromisemyAll = function(promises) {
 PromisemyRace = function(promises) {
     return new Promise((resolve,reject) => {
         for(let i = 0;i<promises.length;i++) {
-            Promise.resolve(promises[i]).then(val => {
+            promises[i].then(val => {
                 return resolve(val);
             }).catch(e => {
                 return reject(e);

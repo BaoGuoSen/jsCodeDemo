@@ -2,7 +2,7 @@ Function.prototype.mycall = function(context) {
     context = context || window;
     context.fn = this;
     let args = [...arguments].slice(1);
-    let res = eval('context.fn('+args+')');
+    let res = context.fn(...args)
     
     delete context.fn;
     return res;
@@ -15,9 +15,12 @@ Function.prototype.mycall = function(context) {
 Function.prototype.myapply = function(context) {
     context = context || window;
     context.fn = this;
-    let args = [...arguments].slice(1);
-    let res = eval('context.fn('+args+')');
-    
+    let res 
+    if (arguments[1]) {
+        res = context.fn(...arguments[1])
+    } else {
+        res = context.fn()
+    }
     delete context.fn;
     return res;
 }
@@ -31,3 +34,8 @@ Function.prototype.mybind = function() {
         return fn.apply(bindobj,bindargs);
     }
 }
+
+function print(a, b) {
+    console.log(this.name, a + b);
+}
+print.mycall({ name: 'test' }, 1,46)

@@ -37,3 +37,38 @@ class event2 {
 var fn = () => {};
 var event1 = new event2()
 event1.on('click', fn);
+
+class Event {
+    constructor() {
+        this.event = {}
+    }
+
+    on(type,callback) {
+        let callbacks = this.event[type] || []
+        if (callbacks.indexOf(callback) === -1) {
+           callbacks.push(callback)
+        }
+        this.event[type] = callbacks
+    }
+    
+    emit(type,data) {
+        let callbacks = this.event[type]
+        callbacks.forEach(fn => {
+            fn(data)
+        })
+    }
+
+    off(type,callback) {
+        let callbacks = this.event[type]
+        callbacks = callbacks.filters(fn => fn !== callback)
+        this.event[type] = callbacks
+    }
+
+    once(type,callback) {
+        const fn = () => {
+            callback()
+            this.off(type,callback)
+        }
+        this.on(type,fn)
+    }
+}

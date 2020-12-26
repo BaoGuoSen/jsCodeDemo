@@ -2,7 +2,7 @@ function curry(fn) {
     let args = [];
     return function _curry() {
         if(arguments.length === 0) {
-            return fn.apply(fn,args);
+            return fn.apply(this,args);
         }
         // [].push.apply(args,arguments);
         args.push(...arguments);
@@ -19,13 +19,3 @@ let sum = curry(sum1);
 sum(1);
 sum(2)(3,4)(100,12,18);
 console.log(sum());
-
-// function curry(fn) {
-//     let args = [];
-//     return function _curry() {
-//         if (arguments.length === 0) {
-//             return fn.apply(fn, args);
-//         }
-//         [
-//     }
-// }

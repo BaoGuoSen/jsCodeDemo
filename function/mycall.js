@@ -39,3 +39,13 @@ function print(a, b) {
     console.log(this.name, a + b);
 }
 print.mycall({ name: 'test' }, 1,46)
+
+Function.prototype.mybind2 = function () {
+    let fn = this
+    let args = [...arguments].slice(1)
+    let bindObj = arguments[0]
+    return function() {
+        let allArgs = args.concat([...arguments])
+        return fn.apply(bindObj,allArgs)
+    }
+}

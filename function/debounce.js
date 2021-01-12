@@ -1,18 +1,16 @@
 function fn(){
-    console.log("1");
+    console.log([...arguments]);
   }
   function debounce(fn,wait)
   {
     var timeout = null;
     return function(){
       if(timeout) clearTimeout(timeout);
-      timeout = setTimeout(function (){
-        console.log(1,this)
-        fn.apply(this,arguments);
+      timeout = setTimeout(() => {
+        fn.apply(this,arguments)
       },wait);
     };
   }
-  let test = debounce(fn,1500);
-  test();
-  test();
-  test();
+  let test = debounce(fn,150);
+  test(3,3)
+  test(1,2);

@@ -15,7 +15,6 @@ function sum1() {
     return args.reduce((sum, cur) => sum+cur);
 }
 
-let sum = curry(sum1);
-sum(1);
-sum(2)(3,4)(100,12,18);
-console.log(sum());
+let add = curry(sum1);
+
+console.log(add(1,2)(3,4)(7,8,9)())

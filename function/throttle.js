@@ -8,3 +8,10 @@ function throttle(fn,wait) {
     }
   }
 }
+
+const fn = function() {
+  console.log([...arguments])
+}
+
+var test = throttle(fn,1500)
+test(111)

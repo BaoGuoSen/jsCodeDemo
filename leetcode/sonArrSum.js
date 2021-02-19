@@ -15,4 +15,4 @@ function dfs(arr) {
   return res
 }
 let arr = [1,-2,3,10,-4,7,2,-5]
-console.log(dfs([]))
+console.log(dfs(arr))

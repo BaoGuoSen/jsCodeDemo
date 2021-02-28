@@ -12,7 +12,9 @@ function curry(fn) {
 
 function sum1() {
     let args = [...arguments];
-    return args.reduce((sum, cur) => sum+cur);
+    return args.reduce((sum, cur) => {
+        return sum+cur
+    },0);
 }
 
 let add = curry(sum1);

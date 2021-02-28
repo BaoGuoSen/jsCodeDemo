@@ -53,3 +53,33 @@ function dfs(nums, temp, visted,res) {
 }
 
 console.log(getAll("abc"))
+
+
+// const fn = (...args) => {
+//     console.log(args)
+//   for (const arg of args) {
+//     console.log(arg);
+//   }
+// };
+// const [a, b] = [1, 2];
+// fn`${a} + ${b} = ${a + b}`; 
+
+// setTimeout(() => {
+//   console.log(1)
+// }, 0);
+ 
+// const promise = new Promise((resolve, reject) => {
+//   console.log(2)
+//   reject(3)
+//   console.log(4)
+// })
+ 
+// promise
+// .then(() => console.log(5))
+// .catch(() => console.log(6))
+// .then(() => console.log(7))
+// .catch(() => console.log(8))
+// .then(() => console.log(9))  
+// console.log(10)
+
+// 2 4 10 6 7 9 1

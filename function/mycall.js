@@ -1,6 +1,8 @@
 Function.prototype.mycall = function(context) {
     context = context || window;
+    console.log(context)
     context.fn = this;
+    console.log(this)
     let args = [...arguments].slice(1);
     let res = context.fn(...args)
     
@@ -8,9 +10,9 @@ Function.prototype.mycall = function(context) {
     return res;
 }
 
-// let arr = [1,2,3];
-// arr.push.mycall(arr,4,5);
-// console.log(arr);
+let arr = [1,2,3];
+arr.push.mycall(arr,4,5);
+console.log(arr);
 
 Function.prototype.myapply = function(context) {
     context = context || window;
@@ -38,7 +40,7 @@ Function.prototype.mybind = function() {
 function print(a, b) {
     console.log(this.name, a + b);
 }
-print.mycall({ name: 'test' }, 1,46)
+// print.mycall({ name: 'test' }, 1,46)
 
 Function.prototype.mybind2 = function () {
     let fn = this

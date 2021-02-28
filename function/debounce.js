@@ -8,6 +8,7 @@ function fn(){
       if(timeout) clearTimeout(timeout);
       timeout = setTimeout(() => {
         fn.apply(this,arguments)
+        // console.log(this)
       },wait);
     };
   }

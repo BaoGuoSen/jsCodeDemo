@@ -28,5 +28,7 @@ var handler = {
 }
 
 var proxy = new Proxy(obj2, handler)
-proxy.age = 10
-console.log(obj2.age)
+// obj2.age = 222
+proxy.age = 777
+// console.log(obj2.age)
+console.log(proxy.age)

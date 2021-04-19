@@ -1,6 +1,6 @@
 var str="2020/12/31 00:00:00";
-var endDate = new Date(str); 
-var start = new Date();
+var endDate = new Date(); 
+var start = new Date(str);
 var time = endDate.getTime() - start.getTime();
 
 function getlabel(time) {

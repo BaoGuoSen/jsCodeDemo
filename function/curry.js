@@ -2,6 +2,7 @@ function curry(fn) {
     let args = [];
     return function _curry() {
         if(arguments.length === 0) {
+            console.log(this)
             return fn.apply(this,args);
         }
         // [].push.apply(args,arguments);

@@ -1,5 +1,5 @@
 function toHumb (name) {
-    return name.replace(/_(\w)(\w)/g, function (all,letter) {
+    return name.replace(/_(\w)/g, function (all,letter) {
         console.log(all)
         console.log(letter)
         return letter.toUpperCase();

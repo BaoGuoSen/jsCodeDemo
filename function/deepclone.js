@@ -8,14 +8,31 @@ function deepclone(obj) {
     }
     return newobj;
 }
+function deepclone2 (obj,map = new Map()) { // 循环引用问题，使用map表
+    if (obj === null || typeof obj === 'object') return obj
 
-let obj = {
+    if (map.get(obj)) { // 判断循环引用的关键,如果这个对象已经被引用了，则直接返回
+        return map.get(obj)
+    }
+    let res = Array.isArray(obj) ? [] : {}
+    map.set(obj,res)  // 添加引用
+    for(let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            res[key] = typeof obj[key] === 'object' ? deepclone2(obj[key],map) : obj[key]
+        }
+    }
+    return res
+}
+
+var obj = {
     d:1,
     a:function test() { console.log(1)},
     b:[1,2],
     c:{},
     e: /{d}/,
-    f: new Date()
+    f: new Date(),
+    k: {obj:obj}
+    
 }
 let newobj = deepclone(obj);
 
@@ -24,8 +41,12 @@ let newobj = deepclone(obj);
 // let newobj3 = {...obj};
 // newobj3.d=2;
 // console.log(obj);
-console.log(newobj);
-// console.log(newobj2);
-// console.log(newobj3);
-// console.log(typeof obj.a);
-console.log(typeof /d/)
+// console.log(newobj);
+
+
+let a = [1, 2];
+let b = [4, 5, 6, a];
+
+a.push(b)
+let c = deepclone2(a)
+console.log(c)
